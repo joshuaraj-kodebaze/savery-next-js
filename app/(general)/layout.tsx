@@ -1,3 +1,5 @@
+"use client";
+
 // Import libraries
 import { styled } from "@mui/material";
 

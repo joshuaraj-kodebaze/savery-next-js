@@ -1,3 +1,5 @@
+"use client";
+
 import MicrosoftIcon from "@/assets/icons/microsoft-icon.svg";
 import GoogleIcon from "@/assets/icons/google-icon.svg";
 import GithubIcon from "@/assets/icons/github-icon.svg";
