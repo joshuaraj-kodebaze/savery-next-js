@@ -143,6 +143,7 @@ const TopBar = ({ isOpen = false, onClick }: TopBarProps) => {
                   sx={{
                     display: "flex",
                     gap: "8px",
+                    alignItems: "center",
                   }}
                 >
                   <Image
@@ -154,6 +155,7 @@ const TopBar = ({ isOpen = false, onClick }: TopBarProps) => {
                     sx={{
                       fontSize: 16,
                       fontWeight: 600,
+                      color: COLORS.darkBlue,
                     }}
                   >
                     {projectDetails.name}

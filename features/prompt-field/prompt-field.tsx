@@ -3,6 +3,7 @@
 // Import libraries
 import { useState, useRef, useEffect } from "react";
 import { useTheme, useMediaQuery } from "@mui/material";
+import Image from "next/image";
 
 // Import components
 import {
@@ -72,7 +73,7 @@ const PromptField = ({
       />
       <Button
         variant="contained"
-        startIcon={<img src={SaveryIcon} alt="Button Icon" />}
+        startIcon={<Image src={SaveryIcon} alt="Savery Icon" />}
         style={{ minWidth: 120, maxWidth: 120 }}
         onClick={() => onButtonClick(description)}
       >
