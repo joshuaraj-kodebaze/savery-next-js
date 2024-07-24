@@ -169,6 +169,7 @@ const TopBar = ({ isOpen = false, onClick }: TopBarProps) => {
                   sx={{
                     display: "flex",
                     gap: "8px",
+                    alignItems: "center",
                   }}
                 >
                   <Image

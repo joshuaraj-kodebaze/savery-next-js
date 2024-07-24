@@ -16,7 +16,7 @@ const Logo = () => {
   return (
     <Link href={userToken ? ROUTES.projects.ALL_PROJECTS : "#"}>
       <div style={{ display: "flex" }}>
-        <Image src={SaveryLogo} width={100} alt="Savery Logo" />
+        <Image src={SaveryLogo} width={100} height={25} alt="Savery Logo" />
       </div>
     </Link>
   );

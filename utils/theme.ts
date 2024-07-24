@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles';
 import { COLORS } from './colors';
 
 const titilliumWeb = Titillium_Web({
-    weight: ['300', '400', '700'],
+    weight: ['300', '400', '600', '700'],
     subsets: ['latin'],
     display: 'swap',
 });
@@ -12,6 +12,9 @@ const titilliumWeb = Titillium_Web({
 const theme = createTheme({
     typography: {
         fontFamily: titilliumWeb.style.fontFamily,
+        allVariants: {
+            color: COLORS.darkBlue,
+        }
     },
     palette: {
         common: {
