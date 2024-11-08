@@ -31,7 +31,7 @@ type LayoutContainerProps = {
   isOpen: boolean;
 } & BoxProps;
 
-export const LayoutContainer = styled("div")<LayoutContainerProps>(
+const LayoutContainer = styled("div")<LayoutContainerProps>(
   ({ theme, isOpen }) => ({
     height: "calc(100vh - 50px)",
     marginTop: 50,

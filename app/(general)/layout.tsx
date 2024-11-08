@@ -6,7 +6,7 @@ import { styled } from "@mui/material";
 // Import features
 import TopBar from "@/features/top-bar/top-bar";
 
-export const LayoutContainer = styled("div")(({ theme }) => ({
+const LayoutContainer = styled("div")(({ theme }) => ({
   height: "calc(100vh - 50px)",
   marginTop: 50,
   marginLeft: 0,
