@@ -66,6 +66,7 @@ const AllProjects = () => {
         .then((res) => res.data);
 
       if (response.length) {
+        // @ts-expect-error
         response.map((project) => {
           setProjectList((prevState) => {
             if (prevState.map((_state) => _state.id).includes(project.id))
@@ -77,6 +78,7 @@ const AllProjects = () => {
       return response;
     };
 
+    // @ts-expect-error
     workspaces.map((workspace) => {
       try {
         setIsProjectsLoading(true);
