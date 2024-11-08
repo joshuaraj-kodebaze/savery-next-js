@@ -102,7 +102,7 @@ const ProjectList = ({ searchText, projectList, refetch }: TProjectList) => {
   );
 };
 
-export const ProjectListLoader = () => {
+const ProjectListLoader = () => {
   return (
     <Box component={"div"} sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
       <Skeleton variant="rounded" width={182} height={208} />

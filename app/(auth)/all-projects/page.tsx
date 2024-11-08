@@ -1,7 +1,7 @@
 "use client";
 
 // Import libraries
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Skeleton } from "@mui/material";
 import { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 
@@ -9,7 +9,6 @@ import axios from "axios";
 import SearchField from "@/components/search-field/search-field";
 import ProjectCard from "@/features/project-card/project-card";
 import { SectionToolBar } from "./all-projects.styles";
-import { ProjectListLoader } from "../workspaces/[workspaceId]/page";
 
 // Import queries
 import useGetWorkspaces from "@/queries/workspaces/useGetWorkspaces";
@@ -36,6 +35,16 @@ const EmptyProjectList = () => {
       <Typography sx={{ fontSize: "14px", fontWeight: 600 }}>
         Currently, you have no projects
       </Typography>
+    </Box>
+  );
+};
+
+const ProjectListLoader = () => {
+  return (
+    <Box component={"div"} sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+      <Skeleton variant="rounded" width={182} height={208} />
+      <Skeleton variant="rounded" width={182} height={208} />
+      <Skeleton variant="rounded" width={182} height={208} />
     </Box>
   );
 };
