@@ -302,6 +302,7 @@ const General = () => {
           </Box>
           {workspaceMembers.map((member: any, index: number) => (
             <Box
+              key={`wortkspace-memebr${index}`}
               component={"div"}
               sx={{
                 display: "flex",
