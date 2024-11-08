@@ -32,6 +32,10 @@ export const Title = styled(Typography)<TypographyProps>(() => ({
   fontSize: "14px",
   fontWeight: 600,
   cursor: "pointer",
+  // textTransform: "capitalize",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 }));
 
 export const MembersCount = styled(Typography)<TypographyProps>(() => ({

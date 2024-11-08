@@ -11,36 +11,41 @@ import {
 import Link from "next/link";
 
 // Import types
-import { TNavLink } from "./side-bar.types";
+import { TNavLink, TSectionTitle, TSideBarContainer } from "./side-bar.types";
 
-export const SideBarContainer = styled(Drawer)<DrawerProps>(({ theme }) => ({
-  "& .MuiPaper-root": {
-    width: 208,
-    height: "100vh",
-    borderRight: `1px solid ${theme.palette.divider}`,
-    backgroundColor: theme.palette.background.default,
-    paddingTop: 74,
-    paddingBottom: 24,
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+export const SideBarContainer = styled(Drawer)<TSideBarContainer>(
+  ({ theme, isWorkspaceActive }) => ({
+    "& .MuiPaper-root": {
+      width: 208,
+      height: "100vh",
+      borderRight: `1px solid ${theme.palette.divider}`,
+      backgroundColor: theme.palette.background.default,
+      paddingTop: isWorkspaceActive ? 50 : 74,
+      paddingBottom: 24,
+      [theme.breakpoints.down("md")]: {
+        width: "100%",
+      },
+      zIndex: 8,
     },
-  },
-}));
+  })
+);
 
 export const SideBarInnerContainer = styled(Box)<BoxProps>(() => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  height: "calc(100vh - 98px)",
+  height: "calc(100vh - 74px)",
 }));
 
-export const SectionTitle = styled(Typography)<TypographyProps>(() => ({
-  textTransform: "capitalize",
-  padding: "0 12px",
-  fontSize: 12,
-  fontWeight: 700,
-  margin: "16px 0 25px",
-}));
+export const SectionTitle = styled(Typography)<TSectionTitle>(
+  ({ isFirst, isWorspaceActive }) => ({
+    textTransform: "capitalize",
+    padding: "0 12px",
+    fontSize: 12,
+    fontWeight: 700,
+    margin: isFirst ? (isWorspaceActive ? "0px" : "0px 0 25px") : "16px 0 25px",
+  })
+);
 
 export const NavLink = styled(Link)<TNavLink>(
   ({ theme, disabled, isactivelink }) => ({

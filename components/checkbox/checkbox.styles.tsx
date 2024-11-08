@@ -1,16 +1,16 @@
 // Import libraries
-import { styled } from '@mui/material';
+import { styled } from "@mui/material";
 
-export const Icon = styled('span')(({ theme }) => ({
+export const Icon = styled("span")(({ theme }) => ({
   borderRadius: 2,
-  width: 24,
-  height: 24,
-  boxShadow: 'none',
+  width: 16,
+  height: 16,
+  boxShadow: "none",
   border: `1px solid ${theme.palette.text.primary}`,
-  'input:disabled ~ &': {
+  "input:disabled ~ &": {
     border: `1px solid ${theme.palette.text.disabled}`,
   },
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 }));

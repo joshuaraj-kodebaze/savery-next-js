@@ -4,12 +4,16 @@ import { configureStore } from '@reduxjs/toolkit';
 // Import reducers
 import authReducer from './auth/authSlice';
 import userReducer from './user/userSlice';
+import projectReducer from './project/projectSlice';
+import toastReducer from './toast/toastSlice';
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
             auth: authReducer,
-            user: userReducer
+            user: userReducer,
+            project: projectReducer,
+            toast: toastReducer
         },
     })
 }

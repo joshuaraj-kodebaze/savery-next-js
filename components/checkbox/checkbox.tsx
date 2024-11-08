@@ -1,22 +1,19 @@
 // Import libraries
-import {
-  Checkbox,
-  type CheckboxProps,
-  useTheme,
-} from '@mui/material';
-import { faCheck } from '@fortawesome/pro-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Checkbox, type CheckboxProps, useTheme } from "@mui/material";
+import { faCheck } from "@fortawesome/pro-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Import components
-import { Icon } from './checkbox.styles';
+import { Icon } from "./checkbox.styles";
 
-const CheckBox = (props: Omit<CheckboxProps, 'disableRipple'>) => {
+const CheckBox = (props: Omit<CheckboxProps, "disableRipple">) => {
   const theme = useTheme();
 
   return (
     <Checkbox
       sx={{
-        '&:hover': { bgcolor: 'transparent' },
+        padding: "0px",
+        "&:hover": { bgcolor: "transparent" },
       }}
       disableRipple
       color="default"
@@ -34,7 +31,7 @@ const CheckBox = (props: Omit<CheckboxProps, 'disableRipple'>) => {
         </Icon>
       }
       icon={<Icon />}
-      inputProps={{ 'aria-label': 'Checkbox demo' }}
+      inputProps={{ "aria-label": "Checkbox demo" }}
       {...props}
     />
   );

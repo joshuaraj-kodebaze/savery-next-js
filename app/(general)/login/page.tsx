@@ -7,7 +7,8 @@ import Divider from "@mui/material/Divider";
 import { Typography, useTheme } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 // Import components
 import {
@@ -19,14 +20,18 @@ import {
   SamlButtonContainer,
 } from "./login.styles";
 
+import { ROUTES } from "@/utils/constants";
+
 interface LoginButtonProps {
   icon: string;
   text: string;
+  onClick?: () => void;
+  isDisabled?: boolean;
 }
 
-const LoginButton = ({ icon, text }: LoginButtonProps) => {
+const LoginButton = ({ icon, text, onClick, isDisabled }: LoginButtonProps) => {
   return (
-    <ButtonContainer onClick={() => console.log(`${text} button clicked`)}>
+    <ButtonContainer onClick={onClick} isDisabled={isDisabled}>
       <Image src={icon} style={{ height: 16, width: 16 }} alt="Icon" />
       <ButtonText>{text}</ButtonText>
     </ButtonContainer>
@@ -36,6 +41,10 @@ const LoginButton = ({ icon, text }: LoginButtonProps) => {
 const Login = () => {
   const theme = useTheme();
   const navigate = useRouter();
+
+  const searchParams = useSearchParams(); // Get query parameters from the URL.
+  const callbackUrl =
+    searchParams.get("callbackUrl") || `${ROUTES.workspaces.ALL_WORKSPACES}`;
 
   return (
     <Container>
@@ -48,9 +57,21 @@ const Login = () => {
       >
         Create your free account
       </Typography>
-      <LoginButton icon={MicrosoftIcon} text="Sign in with Microsoft" />
-      <LoginButton icon={GoogleIcon} text="Sign in with Google" />
-      <LoginButton icon={GithubIcon} text="Sign in with GitHub" />
+      <LoginButton
+        icon={MicrosoftIcon}
+        text="Sign in with Microsoft"
+        isDisabled={true}
+      />
+      <LoginButton
+        icon={GoogleIcon}
+        text="Sign in with Google"
+        onClick={() => signIn("google", { callbackUrl })}
+      />
+      <LoginButton
+        icon={GithubIcon}
+        text="Sign in with GitHub"
+        isDisabled={true}
+      />
 
       <TermsTextContainer>
         By clicking continue, you agree to our
@@ -89,6 +110,7 @@ const Login = () => {
         onClick={() => {
           navigate.push("/saml");
         }}
+        isDisabled={true}
       >
         SAML SSO
       </SamlButtonContainer>

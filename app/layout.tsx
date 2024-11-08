@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "@/utils/theme";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+
+// Import context
 import StoreProvider from "./StoreProvider";
+import AuthContext from "./AuthContext";
+
+// Import utils
+import theme from "@/utils/theme";
 
 config.autoAddCss = false;
 
@@ -24,7 +29,9 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <StoreProvider>{children}</StoreProvider>
+            <AuthContext>
+              <StoreProvider>{children}</StoreProvider>
+            </AuthContext>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
