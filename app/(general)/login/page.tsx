@@ -39,7 +39,7 @@ const LoginButton = ({ icon, text, onClick, isDisabled }: LoginButtonProps) => {
   );
 };
 
-const Login = () => {
+const LoginContainer = () => {
   const theme = useTheme();
   const navigate = useRouter();
 
@@ -48,75 +48,81 @@ const Login = () => {
     searchParams.get("callbackUrl") || `${ROUTES.workspaces.ALL_WORKSPACES}`;
 
   return (
+    <Container>
+      <Typography
+        sx={{
+          fontSize: 24,
+          fontWeight: 600,
+          marginBottom: 4,
+        }}
+      >
+        Create your free account
+      </Typography>
+      <LoginButton
+        icon={MicrosoftIcon}
+        text="Sign in with Microsoft"
+        isDisabled={true}
+      />
+      <LoginButton
+        icon={GoogleIcon}
+        text="Sign in with Google"
+        onClick={() => signIn("google", { callbackUrl })}
+      />
+      <LoginButton
+        icon={GithubIcon}
+        text="Sign in with GitHub"
+        isDisabled={true}
+      />
+
+      <TermsTextContainer>
+        By clicking continue, you agree to our
+        <Link
+          href="/terms"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: theme.palette.text.primary,
+            textDecoration: "none",
+          }}
+        >
+          {" "}
+          Terms of Service{" "}
+        </Link>
+        and
+        <Link
+          href="/policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: theme.palette.text.primary,
+            textDecoration: "none",
+          }}
+        >
+          {" "}
+          Privacy Policy{" "}
+        </Link>
+      </TermsTextContainer>
+
+      <ContinueText>
+        <Divider> or continue with</Divider>
+      </ContinueText>
+
+      <SamlButtonContainer
+        onClick={() => {
+          navigate.push("/saml");
+        }}
+        isDisabled={true}
+      >
+        SAML SSO
+      </SamlButtonContainer>
+    </Container>
+  );
+};
+
+const Login = () => {
+  return (
     <Suspense>
-      <Container>
-        <Typography
-          sx={{
-            fontSize: 24,
-            fontWeight: 600,
-            marginBottom: 4,
-          }}
-        >
-          Create your free account
-        </Typography>
-        <LoginButton
-          icon={MicrosoftIcon}
-          text="Sign in with Microsoft"
-          isDisabled={true}
-        />
-        <LoginButton
-          icon={GoogleIcon}
-          text="Sign in with Google"
-          onClick={() => signIn("google", { callbackUrl })}
-        />
-        <LoginButton
-          icon={GithubIcon}
-          text="Sign in with GitHub"
-          isDisabled={true}
-        />
-
-        <TermsTextContainer>
-          By clicking continue, you agree to our
-          <Link
-            href="/terms"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: theme.palette.text.primary,
-              textDecoration: "none",
-            }}
-          >
-            {" "}
-            Terms of Service{" "}
-          </Link>
-          and
-          <Link
-            href="/policy"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: theme.palette.text.primary,
-              textDecoration: "none",
-            }}
-          >
-            {" "}
-            Privacy Policy{" "}
-          </Link>
-        </TermsTextContainer>
-
-        <ContinueText>
-          <Divider> or continue with</Divider>
-        </ContinueText>
-
-        <SamlButtonContainer
-          onClick={() => {
-            navigate.push("/saml");
-          }}
-          isDisabled={true}
-        >
-          SAML SSO
-        </SamlButtonContainer>
-      </Container>
+      <LoginContainer />
     </Suspense>
   );
 };
